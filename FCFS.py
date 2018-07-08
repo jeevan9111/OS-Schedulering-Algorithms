@@ -11,7 +11,7 @@ while len(jobs) > 0:
     for job in jobs:
         if time < job['ArrivalTime']:
             break
-        jobQueue.put(job['BurstTime'], job['BurstTime'])
+        jobQueue.put (job['BurstTime'])
 
         jobs = [j for j in jobs if j != job]
 
