@@ -1,11 +1,11 @@
 import JobSpecification
-from PriorityQueue import Queue
+from queue import PriorityQueue
 
 jobList = JobSpecification.jobs
 jobs = jobList
 jobQueue = PriorityQueue(maxsize=0)
 time = 0
-
+print("BurstTime \tStartedTime \t CompeltedTime")
 while len(jobs) > 0:
 
     for job in jobs:
@@ -15,9 +15,8 @@ while len(jobs) > 0:
 
         jobs = [j for j in jobs if j != job]
 
-    while True:
+    while not jobQueue.empty():
         BurstTime = jobQueue.get()
-        if BurstTime > 0:
-            time = time + BurstTime
-            print(BurstTime)
-        break
+        print("\t", BurstTime, "\t\t\t", time, end="\t\t\t")
+        time = time + BurstTime
+        print(time)
